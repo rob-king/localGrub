@@ -9,25 +9,25 @@ module.exports = {
 
   attributes: {
     name: {
-      type: 'string'
+      'type': 'string'
     },
     url: {
-      type: 'string'
+      'type': 'string'
     },
     street: {
-      type: 'string'
+      'type': 'string'
     },
     city: {
-      type: 'string'
+      'type': 'string'
     },
     county: {
-      type: 'string'
+      'type': 'string'
     },
     state: {
-      type: 'string'
+      'type': 'string'
     },
     zip: {
-      type: 'string'
+      'type': 'string'
     }
   }
 };

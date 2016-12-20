@@ -6,6 +6,11 @@
  */
 
 module.exports = {
-	
+  zipcode: function(req,res) {
+    FarmersMarket.find({zipCode:req.param('zipcode')}).exec((err, markets) => {
+      res.json(markets)
+      console.log(`zipcode search: req.param('zipcode')`)
+      console.log(markets)
+    })
+  }
 };
-
