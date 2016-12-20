@@ -2,10 +2,7 @@ var mongoose = require('mongoose');
 var db = mongoose.connect('mongodb://localhost/localGrub');
 var Converter = require('csvtojson').Converter;
 
-
-
 var Schema = mongoose.Schema
-
 
 var MarketSchema = new Schema({
   fmid: String,
@@ -23,7 +20,6 @@ var MarketSchema = new Schema({
 
 var MarketModel =  mongoose.model("farmersmarket", MarketSchema)
 var converter = new Converter({})
-
 
 converter.fromFile("./export.csv",function(err,result){
   result.forEach((market)  => {

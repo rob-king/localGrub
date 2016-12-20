@@ -1,8 +1,6 @@
 var axios = require('axios')
 var Converter = require('csvtojson').Converter;
 
-//decided to seed this way as a workaround for a particular issue and a test of sails api
-
 var url = 'http://localhost:1337/farmersmarket'
 var converter = new Converter({})
 converter.fromFile("./export.csv",function(err,result){
