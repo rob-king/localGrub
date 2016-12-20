@@ -36,7 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'get /zipcode/:zipcode': 'FarmersMarketController.zipcode'
+  'get /zipcode/:zipcode': 'FarmersMarketController.zipcode',
+  'get /farmersmarket/:fmid':'FarmersMarketController.fmid_show'
 
   /***************************************************************************
   *                                                                          *
