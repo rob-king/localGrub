@@ -7,10 +7,14 @@
 
 module.exports = {
   zipcode: function(req,res) {
-    FarmersMarket.find({zipCode:req.param('zipcode')}).exec((err, markets) => {
+    FarmersMarket.find({zip: req.param('zipcode')}).exec((err, markets) => {
       res.json(markets)
-      console.log(`zipcode search: req.param('zipcode')`)
+      console.log(`zipcode search: ${req.param('zipcode')}`)
       console.log(markets)
     })
+  },
+
+  fmid_show: function(req, res) {
+
   }
 };

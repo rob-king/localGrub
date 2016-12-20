@@ -8,6 +8,9 @@
 module.exports = {
 
   attributes: {
+    fmid: {
+      'type':'string'
+    },
     name: {
       'type': 'string'
     },
