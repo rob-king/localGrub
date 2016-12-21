@@ -24,7 +24,6 @@ module.exports.bootstrap = function(cb) {
       console.log(err)
     }
   });
-  console.log(process.env)
 
   cb();
 };
