@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "async": "^2.1.4",
     "axios": "^0.15.3",
     "csv": "^1.1.0",
     "csvtojson": "^1.0.3",
