@@ -1,3 +1,9 @@
-<form name="Search">
-  <input type="text">
+<form name="Search" ng-submit="vm.search()">
+  <input type="text" placeholder="Enter a Zipcode" data-ng-model="vm.zipcode">
 </form>
+
+<div class="results">
+  <div data-ng-repeat="market in vm.results">
+    <a data-ui-sref="showMarket({fmid: market.fmid})"><p>{{market.name}}</p></a>
+  </div>
+</div>
