@@ -6,25 +6,34 @@
  */
 
  var async_helper =  require('async')
+
  var Yelp = require('yelp')
 
- var yelp = new Yelp({
-   consumer_key: 'IWlgB9L9Gj1log9uvC02yg',
-   consumer_secret: 'PQPZuDso1_0wz6ac0hZZabjaUaU',
-   token: 'rikt_59E-Z3ieTBqvt0bFa-yOQGnFkqu',
-   token_secret: 'aVQCbI7qX_OHK7qxGarWyABSSVQ',
+//Figaro wouldnt sync up for the inital controller load even when in bootstrap.js
+//This ensures that things are set when the environment variables are done being added.
+var yelp = new Yelp({
+ consumer_key: process.env["YELP_CONSUMER_KEY"],
+   consumer_secret: process.env["YELP_CONSUMER_SECRET"],
+   token: process.env["YELP_TOKEN"],
+   token_secret: process.env["YELP_SECRET_TOKEN"],
  });
 
+function checkYelpConfig() {
+  if (!yelp.oauthToken) {
+    yelp = new Yelp({
+     consumer_key: process.env["YELP_CONSUMER_KEY"],
+       consumer_secret: process.env["YELP_CONSUMER_SECRET"],
+       token: process.env["YELP_TOKEN"],
+       token_secret: process.env["YELP_SECRET_TOKEN"],
+     });
+  }
+}
 function getYelpRatings(market, callback) {
-  console.log("hello?")
-  console.log(market)
-  console
   yelp.search({term:market.name, location:market.zip})
     .then((data) => {
       market.rating = data.businesses[0].rating
       callback(null, market)
     }).catch((err) => {
-      market.rating = null
       callback(null, market)
     })
 }
@@ -32,16 +41,7 @@ function getYelpRatings(market, callback) {
 module.exports = {
   zipcode: function(req,res) {
     FarmersMarket.find({zip: req.param('zipcode')}).exec((err, markets) => {
-      // markets.forEach((market, index) => {
-      //   yelp.search({term: market.name, location: market.zip})
-      //     .then((data) => {
-      //       console.log(markets[index])
-      //       markets[index].rating =  data.businesses[0].rating
-      //     }).catch((err) => {
-      //       console.error(err)
-      //     })
-      //   })
-      //   res.json(markets)
+      checkYelpConfig()
       async_helper.map(markets, getYelpRatings, function(err, result) {
         res.json(result)
       })
@@ -50,6 +50,7 @@ module.exports = {
 
   fmid_show: function(req, res) {
     FarmersMarket.findOne({fmid:req.param('fmid')}).exec(function (err, market) {
+      checkYelpConfig()
       yelp.search({term:market.name, location:market.zip})
         .then((data) => {
           market.rating = data.businesses[0].rating

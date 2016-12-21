@@ -18,7 +18,13 @@ module.exports.bootstrap = function(cb) {
     return cb();
   }
 
-   FarmersMarket.create({name:"this is a test"})
+//Npm figaro requires a setup like this
+  var figaro = require('figaro').parse(null, function(err) {
+    if (err) {
+      console.log(err)
+    }
+  });
+  console.log(process.env)
 
   cb();
 };
