@@ -1,4 +1,4 @@
-<h1>
+<h1 class="flow-text">
   Farmer's Market Finder
 </h1>
 
@@ -14,19 +14,21 @@
 <div class="results row">
   <div data-ng-repeat="market in vm.results">
     <div class="col s12 m6 2">
-      <div class="card sticky-action medium blue-green">
+      <div class="card medium blue-green">
         <div class="card-image">
-          <ng-map  center="[{{market.latitude}}, {{market.longitude}}]" zoom="16" style="height: 100%; width: 100%">
+          <ng-map center="[{{market.latitude}}, {{market.longitude}}]" disable-default-u-i="true"  zoom="16" style="width: 100%; height:100%">
             <marker position="[{{market.latitude}}, {{market.longitude}}]">
           </ng-map>
         </div>
         <div class="card-content">
-          <span class="card-title">
-            <p>{{market.street}}</p>
-          </span>
+          <span class="card-title activator flow-text grey-text text-darken-4">{{market.street}}</span>
         </div>
         <div class="card-action">
           <a data-ui-sref="showMarket({fmid: market.fmid})">{{market.name}}</a>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{market.name}}<i class="material-icons right">close</i></span>
+          <p>Filler</p>
         </div>
       </div>
     </div>
