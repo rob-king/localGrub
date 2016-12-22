@@ -47,7 +47,7 @@ function SearchControllerFunction(SearchFactory) {
 function ShowMarketControllerFunction($rootScope, $scope, $stateParams, $state, MarketFactory) {
   angular.extend($rootScope, {
      center: {},
-     markers: {},
+     markers: {}
    });
 
    angular.extend($scope, {
@@ -62,9 +62,13 @@ function ShowMarketControllerFunction($rootScope, $scope, $stateParams, $state, 
       lat: this.market.latitude,
       lng: this.market.longitude
     }
-    $scope.market.lat =  this.market.latitude
-    $scope.market.lng = this.market.longitude
+
+    let marker =  angular.copy(location)
+
+    $scope.market = angular.copy(location)
     $scope.market.zoom =  100
+
+    $scope.markers =  {location: angular.copy(marker)}
 
 
 
