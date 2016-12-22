@@ -1,6 +1,17 @@
-<form name="Search" ng-submit="vm.search()">
-  <input type="text" placeholder="Enter a Zipcode" data-ng-model="vm.zipcode">
-</form>
+<h1>
+  Farmer's Market Finder
+</h1>
+
+<div class="row">
+    <form name="Search" ng-submit="vm.search()">
+
+      <div class="input-field col s12">
+        <i class="material-icons prefix large">room</i>
+        <input id="icon_prefix" type="text" placeholder="Enter a Zipcode" data-ng-model="vm.zipcode">
+      </div>
+    </form>
+</div>
+
 
 <div class="results">
   <div data-ng-repeat="market in vm.results">

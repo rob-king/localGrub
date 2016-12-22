@@ -5,5 +5,7 @@
 
 
 <div class="map">
-  <leaflet center="market" marker="markers" width="500px" height="480px"></leaflet>
+  <ng-map center="[{{vm.market.latitude}}, {{vm.market.longitude}}]" zoom="16" style="width: 500px">
+    <marker position="[{{vm.market.latitude}}, {{vm.market.longitude}}]"></div>
+  </ng-map>
 </div>

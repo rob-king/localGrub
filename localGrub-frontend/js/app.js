@@ -1,4 +1,4 @@
-angular.module("localGrub", ["ui.router", "ngResource"])
+angular.module("localGrub", ["ui.router", "ngResource", "ngMap"])
   .config(["$stateProvider", Router])
   .factory("SearchFactory", ["$resource", SearchFactoryFunction])
   .factory("MarketFactory", ["$resource", MarketFactoryFunction])
