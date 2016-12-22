@@ -11,12 +11,19 @@
       </div>
     </form>
 </div>
-
-
 <div class="results row">
   <div data-ng-repeat="market in vm.results">
-    <div class="col s4">
-      <a data-ui-sref="showMarket({fmid: market.fmid})"><p>{{market.name}}</p></a>
+    <div class="col s12 m6 2">
+      <div class="card blue-green">
+        <div class="card-content">
+          <span class="card-title">
+            <p>{{market.street}}</p>
+          </span>
+        </div>
+        <div class="card-action">
+          <a data-ui-sref="showMarket({fmid: market.fmid})">{{market.name}}</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
