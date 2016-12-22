@@ -51,7 +51,8 @@ function ShowMarketControllerFunction($rootScope, $scope, $stateParams, $state, 
    });
 
    angular.extend($scope, {
-     market: {}
+     market: {},
+     markers: {}
    })
 
    this.market = {}
@@ -66,22 +67,14 @@ function ShowMarketControllerFunction($rootScope, $scope, $stateParams, $state, 
     let marker =  angular.copy(location)
 
     $scope.market = angular.copy(location)
-    $scope.market.zoom =  100
+    $scope.market.zoom =  80
 
     $scope.markers =  {location: angular.copy(marker)}
 
 
 
-    console.log($scope.markers)
+    console.log($scope)
 
   })
 
-
-  // angular.extend($scope, {
-  //   market: {
-  //     lat: 51.505,
-  //     lng: -0.09,
-  //     zoom: 4
-  //   }
-  // })
 }
