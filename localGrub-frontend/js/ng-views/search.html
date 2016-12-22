@@ -13,8 +13,10 @@
 </div>
 
 
-<div class="results">
+<div class="results row">
   <div data-ng-repeat="market in vm.results">
-    <a data-ui-sref="showMarket({fmid: market.fmid})"><p>{{market.name}}</p></a>
+    <div class="col s4">
+      <a data-ui-sref="showMarket({fmid: market.fmid})"><p>{{market.name}}</p></a>
+    </div>
   </div>
 </div>
