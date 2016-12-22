@@ -32,6 +32,8 @@ function getYelpRatings(market, callback) {
   yelp.search({term:market.name, location:market.zip})
     .then((data) => {
       market.rating = data.businesses[0].rating
+      market.latitude = data.businesses[0].location.coordinate.latitude
+      market.longitude = data.businesses[0].location.coordinate.longitude
       callback(null, market)
     }).catch((err) => {
       callback(null, market)
@@ -54,6 +56,8 @@ module.exports = {
       yelp.search({term:market.name, location:market.zip})
         .then((data) => {
           market.rating = data.businesses[0].rating
+          market.latitude = data.businesses[0].location.coordinate.latitude
+          market.longitude = data.businesses[0].location.coordinate.longitude
           res.json({market})
         }).catch((err) => {
           console.error(err)
