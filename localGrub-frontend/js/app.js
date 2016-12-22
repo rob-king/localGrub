@@ -1,9 +1,9 @@
-angular.module("localGrub", ["ui.router", "ngResource", "leaflet-directive"])
+angular.module("localGrub", ["ui.router", "ngResource"])
   .config(["$stateProvider", Router])
   .factory("SearchFactory", ["$resource", SearchFactoryFunction])
   .factory("MarketFactory", ["$resource", MarketFactoryFunction])
   .controller("SearchController", ["SearchFactory", SearchControllerFunction])
-  .controller("ShowMarketController", ["$rootScope", "$scope", "$stateParams", "$state", "MarketFactory", ShowMarketControllerFunction])
+  .controller("ShowMarketController", ["$stateParams", "$state", "MarketFactory", ShowMarketControllerFunction])
 
 
 
@@ -44,18 +44,7 @@ function SearchControllerFunction(SearchFactory) {
   }
 }
 
-function ShowMarketControllerFunction($rootScope, $scope, $stateParams, $state, MarketFactory) {
-  angular.extend($rootScope, {
-     center: {},
-     markers: {}
-   });
-
-   angular.extend($scope, {
-     market: {},
-     markers: {}
-   })
-
-   this.market = {}
+function ShowMarketControllerFunction($stateParams, $state, MarketFactory) {
 
   MarketFactory.get({fmid: $stateParams.fmid}, (response) => {
     this.market = response.market
@@ -63,18 +52,6 @@ function ShowMarketControllerFunction($rootScope, $scope, $stateParams, $state, 
       lat: this.market.latitude,
       lng: this.market.longitude
     }
-
-    let marker =  angular.copy(location)
-
-    $scope.market = angular.copy(location)
-    $scope.market.zoom =  80
-
-    $scope.markers =  {location: angular.copy(marker)}
-
-
-
-    console.log($scope)
-
   })
 
 }
