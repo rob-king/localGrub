@@ -14,7 +14,12 @@
 <div class="results row">
   <div data-ng-repeat="market in vm.results">
     <div class="col s12 m6 2">
-      <div class="card blue-green">
+      <div class="card sticky-action medium blue-green">
+        <div class="card-image">
+          <ng-map  center="[{{market.latitude}}, {{market.longitude}}]" zoom="16" style="height: 100%; width: 100%">
+            <marker position="[{{market.latitude}}, {{market.longitude}}]">
+          </ng-map>
+        </div>
         <div class="card-content">
           <span class="card-title">
             <p>{{market.street}}</p>
